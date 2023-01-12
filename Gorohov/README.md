@@ -4,13 +4,13 @@
 
 | **Лабораторная**                                                              | **Вариант**                       |
 |-------------------------------------------------------------------------------|-----------------------------------|
-| [`lab-21`](https://github.com/Maxsmile123/MAI_109B_22/tree/main/Adamov/lab21) | None                              |
-| [`lab-22`](https://github.com/Maxsmile123/MAI_109B_22/tree/main/Adamov/lab22) | None   |
-| [`lab-23`](https://github.com/Maxsmile123/MAI_109B_22/tree/main/Adamov/lab23) | None                   |
-| [`lab-24`](https://github.com/Maxsmile123/MAI_109B_22/tree/main/Adamov/lab24) | None                |
-| [`lab-25`](https://github.com/Maxsmile123/MAI_109B_22/tree/main/Adamov/lab25) | None                 |
-| [`lab-26`](https://github.com/Maxsmile123/MAI_109B_22/tree/main/Adamov/lab26) | None |
-| [`KP6`](https://github.com/Maxsmile123/MAI_109B_22/tree/main/Adamov/KP6)      | None                  |
-| [`KP7`](https://github.com/Maxsmile123/MAI_109B_22/tree/main/Adamov/KP7)      | None                  |
-| [`KP8`](https://github.com/Maxsmile123/MAI_109B_22/tree/main/Adamov/KP8)      | None                 |
-| [`KP9`](https://github.com/Maxsmile123/MAI_109B_22/tree/main/Adamov/KP9)      | None                  |
+| [`lab-21`](https://github.com/Maxsmile123/MAI_109B_22/tree/main/Gorohov/lab21) | None                              |
+| [`lab-22`](https://github.com/Maxsmile123/MAI_109B_22/tree/main/Gorohov/lab22) | None   |
+| [`lab-23`](https://github.com/Maxsmile123/MAI_109B_22/tree/main/Gorohov/lab23) | None                   |
+| [`lab-24`](https://github.com/Maxsmile123/MAI_109B_22/tree/main/Gorohov/lab24) | None                |
+| [`lab-25`](https://github.com/Maxsmile123/MAI_109B_22/tree/main/Gorohov/lab25) | None                 |
+| [`lab-26`](https://github.com/Maxsmile123/MAI_109B_22/tree/main/Gorohov/lab26) | None |
+| [`KP6`](https://github.com/Maxsmile123/MAI_109B_22/tree/main/Gorohov/KP6)      | None                  |
+| [`KP7`](https://github.com/Maxsmile123/MAI_109B_22/tree/main/Gorohov/KP7)      | None                  |
+| [`KP8`](https://github.com/Maxsmile123/MAI_109B_22/tree/main/Gorohov/KP8)      | None                 |
+| [`KP9`](https://github.com/Maxsmile123/MAI_109B_22/tree/main/Gorohov/KP9)      | None                  |

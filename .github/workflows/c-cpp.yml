@@ -12,7 +12,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Check linters and formatters
+    - name: Run linters and formatters
       uses: cpp-linter/cpp-linter-action@v2
       env:
         GITHUB_TOKEN: ${{ github.token }}
@@ -20,6 +20,7 @@ jobs:
       with:
         style: file
         thread-comments: True
+    - name: Check linters and format
       if: steps.linter.outputs.checks-failed > 0
         run: echo "Some files failed the linting checks!" | exit 1
     - name: Build with make

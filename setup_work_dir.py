@@ -40,4 +40,5 @@ def get_arguments():
 
 
 option = get_arguments()
+print(DATABASE.get(option.github_name, '.'))
 os.chdir(DATABASE.get(option.github_name, '.'))

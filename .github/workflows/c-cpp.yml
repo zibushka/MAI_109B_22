@@ -26,8 +26,7 @@ jobs:
         style: .clang-format
     - name: make
       run: | 
-        python3 setup_work_dir.py -n ${{ github.event.commits[0].author.name }}
-        ls
+        cd $(python3 setup_work_dir.py -n ${{ github.event.commits[0].author.name }})
         make
         
 

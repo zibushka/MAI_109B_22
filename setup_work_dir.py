@@ -35,8 +35,6 @@ def get_arguments():
     parser.add_argument("-n", "--name", dest="github_name",
                         help="Github's username")
     (options, arguments) = parser.parse_args()
-    if not options.github_name:
-        raise Exception('nickname is not exists')
     return options
 
 

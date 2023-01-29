@@ -4,6 +4,10 @@ void TShakerSort::swap(TElement *a, TElement *b){
     TElement c = *a;
     *a = *b;
     *b = c;
+
+
+
+
 }
 
 std::vector<TElement> TShakerSort::sort(std::vector<TElement>& data){

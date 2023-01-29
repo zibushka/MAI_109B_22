@@ -19,9 +19,9 @@ jobs:
         TRIGGERED_BY: ${{ github.event.pull_request.user.login }}
       with:
         style: file
-    - name: build with make
+    - name: Build with make
       run: | 
-        cd $(python3 setup_work_dir.py -n ${{ github.event.commits[0].author.name }})
+        cd $(python3 setup_work_dir.py -n ${{ github.event.pull_request.user.login }})
         make
         
 

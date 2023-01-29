@@ -17,7 +17,7 @@ run: clean build
 	@echo "Executing..."
 	./$(LAB)/$(BIN)/$(EXECUTABLE)
 
-$(LAB)/$(BIN)/$(EXECUTABLE): $(LAB)/$(SRC)/*.cpp
+$(LAB)/$(BIN)/$(EXECUTABLE): $(LAB)/$(SRC)/*.cpp | $(BIN)
 	@echo "Building..."
 	$(CXX) $(CXX_FLAGS) -I ./$(LAB)/$(INCLUDE) -L$(LAB)/$(LIB) $^ -o $@ $(LIBRARIES)
 
@@ -25,6 +25,9 @@ $(LAB)/$(TESTS)/$(EXECUTABLE): $(LAB)/$(SRC)/*.cpp
 	@echo "building..."
 	pwd
 	$(CXX) $(CXX_FLAGS) -I ./$(LAB)/$(INCLUDE) -L $(LAB)/$(LIB) $^ -o $@ $(LIBRARIES)
+
+$(BIN):
+	mkdir $@
 
 clean:
 	@echo "Clearing..."

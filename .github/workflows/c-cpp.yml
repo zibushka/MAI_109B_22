@@ -27,7 +27,6 @@ jobs:
         repo-root: ../..
     - name: make
       run: |
-        cd ../../Labs_summary
         make
         
 

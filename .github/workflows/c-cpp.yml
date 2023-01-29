@@ -5,14 +5,13 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+  defaults:
+    run:
+      working-directory: ../..
 
 jobs:
-  build:
-
+  Checks changing:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ../../
 
     steps:
     - uses: actions/checkout@v3
@@ -22,11 +21,12 @@ jobs:
       uses: cpp-linter/cpp-linter-action@v2
       env:
         GITHUB_TOKEN: ${{ github.token }}
+        TRIGGERED_BY: ${{ github.event.pull_request.user.login }}
       with:
         style: .clang-format
-        repo-root: ../..
     - name: make
-      run: |
+      run: | 
+        python3 setup_work_dir.py --name ${{ github.event.pull_request.user.login }}
         make
         
 

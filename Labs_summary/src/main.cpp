@@ -1,6 +1,6 @@
 #include <iomanip>
 #include <chrono>
-#include "BucketSort.h"
+#include "../include/BucketSort.h"
 
 const double infinum = -100.0;
 const double supremum = 100.0;

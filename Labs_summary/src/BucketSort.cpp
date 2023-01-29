@@ -1,4 +1,4 @@
-#include "BucketSort.h"
+#include "../include/BucketSort.h"
 
 std::vector<TElement> TBucketSort::sort(const std::vector<TElement>& data, const double inf, const double sup, const int numBuckets){
     std::vector<TElement> answer;

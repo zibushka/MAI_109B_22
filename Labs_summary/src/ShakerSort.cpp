@@ -1,4 +1,4 @@
-#include "ShakerSort.h"
+#include "../include/ShakerSort.h"
 
 void TShakerSort::swap(TElement *a, TElement *b){
     TElement c = *a;

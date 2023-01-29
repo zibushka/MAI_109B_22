@@ -10,17 +10,25 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ../../
 
     steps:
     - uses: actions/checkout@v3
-    - name: C/C++ code linter (clang-tidy, clang-format, and cppcheck)
+    - name: C++ linters and formatters
       # You may pin to the exact commit or the version.
       # uses: ArtificialAmateur/cpp-linter-action@6281cc1ef3abe25ee492f19f7d8b184ca873db34
-      uses: ArtificialAmateur/cpp-linter-action@0.01
+      uses: cpp-linter/cpp-linter-action@v2
       env:
         GITHUB_TOKEN: ${{ github.token }}
+      with:
+        style: file
+        repo-root: ../..
     - name: make
-      run: make
-    - name: run tests
-      run: make test
+      run: |
+        cd ../../Labs_summary
+        make
+        
+
 

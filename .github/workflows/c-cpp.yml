@@ -23,7 +23,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ github.token }}
       with:
-        style: file
+        style: .clang-format
         repo-root: ../..
     - name: make
       run: |

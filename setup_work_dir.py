@@ -34,8 +34,8 @@ def get_arguments():
     parser = argparse.ArgumentParser()
     parser.add_argument("-n", "--name", dest="github_name",
                         help="Github's username")
-    (options, arguments) = parser.parse_args()
-    return options
+    arguments = parser.parse_args()
+    return arguments
 
 
 option = get_arguments()

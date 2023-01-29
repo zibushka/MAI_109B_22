@@ -26,7 +26,8 @@ DATABASE = {
     'ktuzova': 'Tuzova',
     'Nyamerka': 'Voropaev',
     'zibushka': 'Yashin',
-    'President-OrackBobama': 'Yusufov'
+    'President-OrackBobama': 'Yusufov',
+    'Maxsmile123': 'Labs_summary',
 }
 
 

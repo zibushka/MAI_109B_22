@@ -19,7 +19,7 @@ run: clean build
 
 $(LAB)/$(BIN)/$(EXECUTABLE): $(LAB)/$(SRC)/*.cpp
 	@echo "Building..."
-	pwd
+	ls
 	$(CXX) $(CXX_FLAGS) -I $(LAB)/$(INCLUDE) -L $(LAB)/$(LIB) $^ -o $@ $(LIBRARIES)
 
 $(LAB)/$(TESTS)/$(EXECUTABLE): $(LAB)/$(SRC)/*.cpp

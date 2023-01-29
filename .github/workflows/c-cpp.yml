@@ -9,22 +9,17 @@ on:
 jobs:
   Checks_changing:
     runs-on: ubuntu-latest
-#    defaults:
-#      run:
-#        working-directory: ../..
 
     steps:
     - uses: actions/checkout@v3
     - name: C++ linters and formatters
-      # You may pin to the exact commit or the version.
-      # uses: ArtificialAmateur/cpp-linter-action@6281cc1ef3abe25ee492f19f7d8b184ca873db34
       uses: cpp-linter/cpp-linter-action@v2
       env:
         GITHUB_TOKEN: ${{ github.token }}
         TRIGGERED_BY: ${{ github.event.pull_request.user.login }}
       with:
-        style: .clang-format
-    - name: make
+        style: file
+    - name: build with make
       run: | 
         cd $(python3 setup_work_dir.py -n ${{ github.event.commits[0].author.name }})
         make

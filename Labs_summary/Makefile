@@ -1,5 +1,5 @@
 CXX       := g++
-CXX_FLAGS := -std=c++17 -Wall -O0 -fsanitize=address
+CXX_FLAGS := -std=c++17 -Wall -fsanitize=address
 
 BIN     := bin
 LAB     := lab23
@@ -10,7 +10,6 @@ TESTS   := tests
 LIBRARIES   := -lstdc++ -lm
 EXECUTABLE  := main
 
-
 build: $(LAB)/$(BIN)/$(EXECUTABLE)
 
 run: clean build
@@ -18,13 +17,14 @@ run: clean build
 	@echo "Executing..."
 	./$(LAB)/$(BIN)/$(EXECUTABLE)
 
-$$(LAB)/(BIN)/$(EXECUTABLE): $(SRC)/*.cpp
+$(LAB)/$(BIN)/$(EXECUTABLE): $(LAB)/$(SRC)/*.cpp
 	@echo "Building..."
-	$(CXX) $(CXX_FLAGS) -I$(INCLUDE) -L$(LIB) $^ -o $@ $(LIBRARIES)
+	$(CXX) $(CXX_FLAGS) -I ./$(LAB)/$(INCLUDE) -L$(LAB)/$(LIB) $^ -o $@ $(LIBRARIES)
 
-$(LAB)/$(TESTS)/$(EXECUTABLE): $(SRC)/*.cpp
-	@echo "Building..."
-	$(CXX) $(CXX_FLAGS) -I$(INCLUDE) -L$(LIB) $^ -o $@ $(LIBRARIES)
+$(LAB)/$(TESTS)/$(EXECUTABLE): $(LAB)/$(SRC)/*.cpp
+	@echo "building..."
+	pwd
+	$(CXX) $(CXX_FLAGS) -I ./$(LAB)/$(INCLUDE) -L $(LAB)/$(LIB) $^ -o $@ $(LIBRARIES)
 
 clean:
 	@echo "Clearing..."

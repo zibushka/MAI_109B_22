@@ -4,7 +4,7 @@ std::vector<TElement> TBucketSort::sort(const std::vector<TElement>& data, const
     std::vector<TElement> answer;
             double minElement = sup;
     double maxElement = inf;
-    std::vector<std::vector<TElement>> buckets(numBuckets);
+            std::vector<std::vector<TElement>> buckets(numBuckets);
     for (auto i : data) {
         minElement = std::min(minElement, i.key);
         maxElement = std::max(maxElement, i.key);

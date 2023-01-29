@@ -9,7 +9,7 @@ int main(){
     std::ios_base::sync_with_stdio(false);
              std::cin.tie(NULL);
     std::cout.tie(nullptr);
-    std::vector<TElement> inputData;
+            std::vector<TElement> inputData;
     TElement temp;
     while(std::cin >> temp){
         inputData.push_back(temp);

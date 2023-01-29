@@ -8,6 +8,8 @@ void TShakerSort::swap(TElement *a, TElement *b){
 
 
 
+
+
 }
 
 std::vector<TElement> TShakerSort::sort(std::vector<TElement>& data){

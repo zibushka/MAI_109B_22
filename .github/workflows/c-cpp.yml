@@ -20,6 +20,7 @@ jobs:
       with:
         style: file
         thread-comments: True
+        files-changed-only: False
     - name: Check linters and format
       if: steps.linter.outputs.checks-failed > 0
       run: echo "Some files failed the linting checks!" | exit 1

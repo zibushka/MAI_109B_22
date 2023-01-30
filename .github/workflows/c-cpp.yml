@@ -1,8 +1,6 @@
 name: C/C++ CI
 
 on:
-  push:
-    branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
 
@@ -12,11 +10,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+      run: cd $(python3 setup_work_dir.py -n ${{ github.event.pull_request.user.login }})
     - name: Run linters and formatters
       uses: cpp-linter/cpp-linter-action@v2
       env:
         GITHUB_TOKEN: ${{ github.token }}
-        TRIGGERED_BY: ${{ github.event.pull_request.user.login }}
       with:
         style: file
         thread-comments: True
@@ -25,9 +23,9 @@ jobs:
       if: steps.linter.outputs.checks-failed > 0
       run: echo "Some files failed the linting checks!" | exit 1
     - name: Build with make
-      run: | 
-        cd $(python3 setup_work_dir.py -n ${{ github.event.pull_request.user.login }})
-        make
+      run: make
+    - name: Run tests
+      run: make test
         
 
 

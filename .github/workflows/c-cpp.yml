@@ -10,6 +10,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - name: cd work dir
       run: cd $(python3 setup_work_dir.py -n ${{ github.event.pull_request.user.login }})
     - name: Run linters and formatters
       uses: cpp-linter/cpp-linter-action@v2

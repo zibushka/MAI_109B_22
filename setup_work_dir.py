@@ -26,7 +26,7 @@ DATABASE = {
     'Nyamerka': './Voropaev',
     'zibushka': './Yashin',
     'President-OrackBobama': './Yusufov',
-    'Maxsmile123': './Labs_summary',
+    'Maxsmile123TEST': './Labs_summary',
 }
 
 

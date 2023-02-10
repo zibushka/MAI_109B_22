@@ -2,7 +2,7 @@ name: C/C++ CI
 
 on:
   pull_request:
-    branches: [ "main" ]
+    branches: main
 
 jobs:
   Checks_changing:

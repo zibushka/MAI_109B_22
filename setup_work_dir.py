@@ -27,6 +27,7 @@ DATABASE = {
     'zibushka': './Yashin',
     'President-OrackBobama': './Yusufov',
     'Maxsmile123TEST': './Labs_summary',
+    'Ellinois4': './Burganova'
 }
 
 

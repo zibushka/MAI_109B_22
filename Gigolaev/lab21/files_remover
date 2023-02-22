@@ -1,0 +1,20 @@
+#!/bin/bash
+
+echo "Enter the target prefix:"
+read prefix
+echo "Enter minimal count of characters in filename:"
+read min_chars
+echo "Enter maximal count of characters in filename:"
+read max_chars
+echo "Files to delete:"
+
+if [ ${#prefix} -gt $max_chars ];
+then
+    echo "ERROR: The prefix is bigger than acceptable filename chars count";
+    exit 1;
+fi
+
+find $prefix* | grep -x -E "[[:print:]]{$min_chars,$max_chars}" | wc -w
+find $prefix* | grep -x -E "[[:print:]]{$min_chars,$max_chars}" | xargs rm
+
+echo "Deleted"

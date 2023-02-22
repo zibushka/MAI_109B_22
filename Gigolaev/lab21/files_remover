@@ -17,4 +17,4 @@ fi
 find $prefix* | grep -x -E "[[:print:]]{$min_chars,$max_chars}" | wc -w
 find $prefix* | grep -x -E "[[:print:]]{$min_chars,$max_chars}" | xargs rm
 
-echo "Deleted"
+echo "Deleted succesfully"

@@ -1,3 +1,5 @@
+import argparse
+import datetime
 import os
 
 
@@ -5,34 +7,49 @@ def checkSuffix(suffix, file):
     fileCopy = file
     fileCopy = fileCopy.split('.')
     fileCopy = fileCopy[0]
-    fileCopy = fileCopy[len(fileCopy) - len(suffix):len(fileCopy)]
+
+    cutBegin = len(fileCopy) - len(suffix)
+    cutEnd = len(fileCopy)
+
+    fileCopy = fileCopy[cutBegin : cutEnd]
+
     return fileCopy == suffix
 
 
-suffix = input("Enter suffix: ")
-outFile = input(
-    "Enter absolute path for output file or file name, if you want to create a file in the current directory: ")
+def writeData(suffix, outFile):
+    outFile = os.path.abspath(outFile)
+    fileList = os.listdir()
+    blockSize = 2
+    fileOut = open(outFile, 'w')
 
-outFile = os.path.abspath(outFile)
-fileSize = 0
-fileList = os.listdir()
-blockSize = 2
+    for file in fileList:
+        file = os.path.abspath(file)
+        if os.path.isfile(file):
+
+            if os.access(file, os.X_OK) == False:
+
+                if checkSuffix(suffix, file):
+                    fileSize = os.stat(file).st_size
+
+                    if fileSize % blockSize == 0:
+                        fileOut.write(f'echo {file} {fileSize}\n')
 
 
-if os.path.exists(outFile):
-    os.remove(outFile)
+def main():
+    now = datetime.datetime.now()
+    nowTime = now.time()
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-sf", "--suffix", type=str, help='End of file name', required=True)
+    parser.add_argument("-o", "--outFile", type=str, help='Path to output file', default=f'{nowTime}.txt')
+
+    args = parser.parse_args()
+
+    suffix = args.suffix
+    outFile = args.outFile
+
+    writeData(suffix, outFile)
 
 
-for file in fileList:
-    file = os.path.abspath(file)
-    if os.path.isfile(file):
-
-        if os.access(file, os.X_OK):
-            print(f'{file} is executable!')
-
-        else:
-            if checkSuffix(suffix, file):
-                fileSize = os.stat(file).st_size
-
-                if fileSize % blockSize == 0:
-                    os.system(f'echo {file} {fileSize} | tee -a {outFile}')
+if __name__ == "__main__":
+    main()

@@ -1,9 +1,19 @@
 #!/bin/bash
 
-echo "Enter suffix: "
-read suffix
-echo "Enter absolute path for output file or file name, if you want to create a file in the current directory: "
-read outFile
+while [ -n "$1" ]
+do
+case "$1" in
+    -sf) suffix="$2"
+    shift ;;
+    -o) outFile="$2"
+    shift ;;
+    --) shift
+    break ;;
+    *) echo "$1 is not an option";;
+esac
+shift
+done
+
 path=$(pwd)
 blockSize=2
 
@@ -13,10 +23,8 @@ for file in "$path"/*
 do
     if [[ -f $file ]]
     then
-        if [[ -x $file ]]
+        if ! [[ -x $file ]]
         then
-            echo "$file is executable"
-        else
             if [[ $file == *"$suffix."* ]]
             then
                 size=$(wc -c $file | awk '{print $1}')

@@ -15,7 +15,7 @@ shift
 done
 
 path=$(pwd)
-blockSize=2
+blockSize=4096
 
 rm $outFile
 

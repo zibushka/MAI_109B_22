@@ -19,17 +19,18 @@ def writeData(suffix, outFile):
     outFile = os.path.abspath(outFile)
     fileList = os.listdir()
     blockSize = 4096
-    fileOut = open(outFile, 'w')
-    fileSize = 0
 
-    for file in fileList:
-        file = os.path.abspath(file)
+    with open(outFile, 'w') as fileOut:
+        fileSize = 0
 
-        if os.path.isfile(file) and not os.access(file, os.X_OK):
-            fileSize = os.stat(file).st_size
+        for file in fileList:
+            file = os.path.abspath(file)
 
-            if checkSuffix(suffix, file) and fileSize % blockSize == 0:
-                fileOut.write(f'{file} {fileSize}\n')
+            if os.path.isfile(file) and not os.access(file, os.X_OK):
+                fileSize = os.stat(file).st_size
+
+                if checkSuffix(suffix, file) and fileSize % blockSize == 0:
+                    fileOut.write(f'{file} {fileSize}\n')
 
 
 def main():
@@ -50,5 +51,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-

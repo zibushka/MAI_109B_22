@@ -13,4 +13,8 @@ if [ ! -d "$1" ]; then
 fi;
 
 # Traverse directory and output subdirectories
-find "$1" -type d | sort
+for file in `find $1 -type d`
+do
+    realpath $file;
+done
+

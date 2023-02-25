@@ -23,7 +23,7 @@ def RemoveTargetFiles(dir_list, prefix, min_name_len, max_name_len):
             files_to_delete_count += 1
     print("Deleted " + str(files_to_delete_count) + " files.")
 
-def main():
+def GetArgs():
     parser = argparse.ArgumentParser(description = 'File remover')
     parser.add_argument(
         '-p',
@@ -43,11 +43,12 @@ def main():
         type = int,
         help = 'Provide maximal file name. Must be greater or equal than prefix'
     )
-
     args = parser.parse_args()
-    prefix = args.prefix
-    min_name_len = args.minlen
-    max_name_len = args.maxlen
+    return (args.prefix, args.minlen, args.maxlen)
+
+def main():
+    
+    prefix, min_name_len, max_name_len = GetArgs()
     dir_list = list(os.walk(".", topdown = True, onerror = None, followlinks = False))
     
     if len(prefix) > int(max_name_len):
@@ -56,5 +57,5 @@ def main():
     RemoveTargetFiles(dir_list, prefix, min_name_len, max_name_len)
 
 
-if name == '__main__':
+if __name__ == '__main__':
     main()

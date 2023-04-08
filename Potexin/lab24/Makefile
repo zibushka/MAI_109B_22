@@ -1,5 +1,5 @@
 CXX       := g++
-CXX_FLAGS := -std=c++17 -Wall -fsanitize=address
+CXX_FLAGS := -std=c++17 -Wall
 
 BIN     := bin
 SRC     := src
@@ -8,33 +8,32 @@ LIB     := lib
 TESTS   := tests
 LIBRARIES   := -lstdc++ -lm
 EXECUTABLE  := main
+RUN_TEST    := test
 
 build: $(BIN)/$(EXECUTABLE)
 
 run: clean build
-	clear
-	@echo "Executing..."
-	$(BIN)/$(EXECUTABLE)
+  @echo "Executing..."
+  $(BIN)/$(EXECUTABLE)
 
 $(BIN)/$(EXECUTABLE): $(SRC)/*.cpp | $(BIN)
-	@echo "Building..."
-	$(CXX) $(CXX_FLAGS) -I $(INCLUDE) -L $(LIB) $^ -o $@ $(LIBRARIES)
+  @echo "Building..."
+  $(CXX) $(CXX_FLAGS) -I $(INCLUDE) -L $(LIB) $^ -o $@ $(LIBRARIES)
 
-$(TESTS)/$(EXECUTABLE): $(SRC)/*.cpp
-	@echo "Building..."
-	$(CXX) $(CXX_FLAGS) -I $(INCLUDE) -L $(LIB) $^ -o $@ $(LIBRARIES)
+$(BIN)/$(RUN_TEST): $(SRC)/*.cpp $(TESTS)/*.cpp $(TESTS)/*.hpp | $(BIN)
+  @echo "Building tests..."
+  $(CXX) $(CXX_FLAGS) -I $(INCLUDE) -L $(LIB) $^ -o $@ $(LIBRARIES)
+
 
 $(BIN):
-	mkdir $@
+  mkdir $@
 
 clean:
-	@echo "Clearing..."
-	-rm $(BIN)/*
+  @echo "Clearing..."
+  -rm -r $(BIN)
 
-test: clean
-	clear
-	@echo "Run tests..."
-	./$(TESTS)/$(EXECUTABLE)
+_test: $(BIN)/$(RUN_TEST)
 
-
-
+test: clean _test
+  @echo "Run tests..."
+  $(BIN)/$(RUN_TEST)

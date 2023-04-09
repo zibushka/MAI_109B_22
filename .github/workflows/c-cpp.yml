@@ -11,7 +11,7 @@ jobs:
     - uses: actions/checkout@v3
     - name: Run clang-tidy
       run: |
-          [[ -z "${GITHUB_BASE_REF}" ]] && BRANCH_VAR=HEAD~1 || BRANCH_VAR=${GITHUB_BASE_REF}
+          [[ -z "${GITHUB_BASE_REF}" ]] && BRANCH_VAR=HEAD~1 || BRANCH_VAR=Maxsmile123:${GITHUB_BASE_REF}
           echo "${BRANCH_VAR}"
           echo "$(git diff --name-only ${BRANCH_VAR})"
           LIST_CHECK_FILES=$(git diff --name-only ${BRANCH_VAR} | grep --color=never '.cpp' | tr '\n' ' ')
@@ -24,7 +24,7 @@ jobs:
           fi
     - name: Build with make
       run: |
-          [[ -z "${GITHUB_BASE_REF}" ]] && BRANCH_VAR=HEAD~1 || BRANCH_VAR=${GITHUB_BASE_REF}
+          [[ -z "${GITHUB_BASE_REF}" ]] && BRANCH_VAR=HEAD~1 || BRANCH_VAR=Maxsmile123:${GITHUB_BASE_REF}
           echo "${BRANCH_VAR}"
           echo "$(git diff --name-only ${BRANCH_VAR})"
           LIST_CHECK_FILES=$(git diff --name-only ${BRANCH_VAR} | grep --color=never '.cpp' | tr '\n' ' ')
@@ -36,7 +36,7 @@ jobs:
           fi
     - name: Run tests
       run: |
-          [[ -z "${GITHUB_BASE_REF}" ]] && BRANCH_VAR=HEAD~1 || BRANCH_VAR=${GITHUB_BASE_REF}
+          [[ -z "${GITHUB_BASE_REF}" ]] && BRANCH_VAR=HEAD~1 || BRANCH_VAR=Maxsmile123:${GITHUB_BASE_REF}
           echo "${BRANCH_VAR}"
           echo "$(git diff --name-only ${BRANCH_VAR})"
           LIST_CHECK_FILES=$(git diff --name-only ${BRANCH_VAR} | grep --color=never '.cpp' | tr '\n' ' ')

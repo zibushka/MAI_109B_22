@@ -2,6 +2,8 @@
 
 Полезные ссылки:
 - [Как создать Pull Request(PR)](Labs_summary/PULL_REQUEST.md)
+- [Как тестировать свой код](tools/CppTest/README.md)
+- [Как смотреть на проверки в CI]()
 
 
 

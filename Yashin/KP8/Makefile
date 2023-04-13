@@ -16,11 +16,11 @@ run: clean build
 	@echo "Executing..."
 	$(BIN)/$(EXECUTABLE)
 
-$(BIN)/$(EXECUTABLE): $(SRC)/*.cpp $(SRC)/*.tpp | $(BIN)
+$(BIN)/$(EXECUTABLE): $(TESTS)/main.cpp | $(BIN)
 	@echo "Building..."
 	$(CXX) $(CXX_FLAGS) -I $(INCLUDE) -L $(LIB) $^ -o $@ $(LIBRARIES)
 
-$(BIN)/$(RUN_TEST): $(SRC)/*.cpp $(SRC)/*.tpp $(TESTS)/*.cpp $(TESTS)/*.hpp |$(BIN)
+$(BIN)/$(RUN_TEST): $(wildcard $(TESTS)/*.cpp) $(wildcard $(TESTS)/*.hpp) |$(BIN)
 	@echo "Building tests..."
 	$(CXX) $(CXX_FLAGS) -I $(INCLUDE) -L $(LIB) $^ -o $@ $(LIBRARIES)
 

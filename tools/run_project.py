@@ -1,5 +1,6 @@
 import argparse
 import os
+import re
 from typing import List
 from typing import Dict
 
@@ -9,7 +10,7 @@ def get_args():
     parser.add_argument('--files', dest='files', help='list of changes files', default=[])
 
     args = parser.parse_args()
-    if args.run_type != 'build' or args.run_type != 'tests':
+    if args.run_type != 'build' and args.run_type != 'tests':
         raise Exception('You need to choose on of options: build or tests')
 
     return args.run_type, args.files
@@ -26,8 +27,14 @@ def run_tests():
 def groub_by_labs(files: List[str]) -> Dict[str, str]:
     labs_category: Dict[str, str] = {}
     for file in files:
-        lab = file.split('/')[2]
-        labs_category[lab] = file.split(lab)[0]
+        search_result = re.search('lab2[0-9]', file)
+        if search_result is None:
+            search_result = re.search('KP[0-9]', file)
+        if search_result is None:
+            continue
+        else:
+            lab = search_result.group()
+        labs_category[lab] = os.path.join(file.split(lab)[0], lab)
 
     return labs_category
 
@@ -47,10 +54,6 @@ def main():
                 build()
             elif run_type == 'tests':
                 run_tests()
-
-
-
-
 
 
 if __name__ == '__main__':
